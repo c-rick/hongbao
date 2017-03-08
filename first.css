@@ -1,0 +1,61 @@
+*{margin:0;padding:0;}
+html{width:100%;height:100%;}
+body{width:100%;height:100%;font-family: "Segoe UI", "Lucida Grande", Helvetica, Arial, "Microsoft YaHei", 
+FreeSans, Arimo,"Droid Sans","wenquanyi micro hei","Hiragino Sans GB", "Hiragino Sans GB W3", Arial, sans-serif;
+font-size: 62.5%;background: url(img/firstbg.jpg)no-repeat;background-size:100% 100%;background-color: #E8EFA9 }
+.logo{position: absolute;top: 1rem;width:100%;z-index: 11;}
+.logo img{width: 16%;margin-left: 42%;}
+.am-footer p{margin-bottom: 0;color:#FEAA3A;}
+.am-footer{padding: 0.5rem 0;width: 100%;background: #E8EFA9;}
+.am-footer img{width:1.5rem;}
+.am-modal{width: 80%;left: 10%;margin-left: 0;}
+.am-modal-hd{font-size: 1.6rem;color:#ff0000;}
+.am-modal-bd{border-bottom: 0;border-top:1px solid #e7e7e7;padding-top:10px;font-size: 1.4rem}
+.am-modal-dialog{padding-bottom: 10px;}
+.am-modal-hd+.am-modal-bd{padding-top: 10px;}
+.am-box-content{width: 100%;padding-top:125%;
+	text-align: center;-webkit-overflow-scrolling : touch;  }
+.input-box{width:100%;padding:0 10%;background: #E8EFA9; }
+.color-f{color:#999;font-size: 1.4rem;margin-bottom: 0.5rem;}
+input{border:0;width: 100%;height: 35px;font-size: 1.3rem;padding-left:10px;margin-bottom:0.5rem;}
+.am-box-content-input{width: 100%;height:35px;text-align: left;}
+#am-input-yanzheng{width:65%;display: inline-block;}
+.am-button-get{width: 100%;height: 35px;border-radius: 2rem;background-color: #FEAA3A;color: #fff;
+	font-size: 1.5rem;line-height: 35px;margin-top: 0.5rem;display: inline-block;}
+.am-div-send{width: 32%;display: inline-block;border-radius: 3px;height: 35px;background-color: #FEAA3A;text-align: center;
+float: right;line-height: 33px;font-size: 1.3rem;color: #fff;margin-left: 5px;}
+.am-div-send.clicked{pointer-events: none;background: #999;}
+.loadingbg{display:none;width: 100%;height: 100%;background: rgba(12,12,12,.8);position: fixed;top: 0;left: 0;z-index: 999;}
+.am-modal-button{font-size: 1.4rem;}
+.am-box-content input{font-size: 1.5rem;}
+
+.loading {
+    width: 4rem;
+    height: 4rem;
+    position: absolute;
+    top: 0;left: 0;bottom: 0;right: 0;
+    margin: auto;
+    border: 2px #fff solid;
+    border-radius: 50%;
+    -webkit-animation: rotation 1s ease-in-out infinite;
+    -moz-animation: rotation 1s ease-in-out infinite;
+    animation: rotation 1s ease-in-out infinite;
+}
+.loading:after {
+    width: 1rem;
+    height: 1rem;
+    background-color: rgba(255,255,255,1);
+    border-radius: 100%;
+    position: absolute;
+    content: "";
+    top:6px;
+}
+@keyframes rotation{
+	from {transform: rotate(0deg);}
+	to {transform: rotate(360deg);}
+}
+@-webkit-keyframes rotation /* Safari 和 Chrome */
+{
+	from {transform: rotate(0deg);}
+	to {transform: rotate(360deg);}
+}

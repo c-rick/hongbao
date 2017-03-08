@@ -1,0 +1,54 @@
+*{margin:0;padding:0;}
+html{width:100%;height:100%;}
+body{width:100%;height:100%;font-family: "Segoe UI", "Lucida Grande", Helvetica, Arial, "Microsoft YaHei", 
+FreeSans, Arimo,"Droid Sans","wenquanyi micro hei","Hiragino Sans GB", "Hiragino Sans GB W3", Arial, sans-serif;
+font-size: 62.5%;background: #DA5E37;}
+.am-background-image{width: 100%;height:100%;position:absolute;z-index:10;top: 0;}
+.shakeImage{margin:0 auto;width:30%;height:auto;position: absolute;top: 30%;left: 35%;z-index: 9;}
+.am-box-showdata{width:88%;height:10rem;margin:0 auto;padding-top:2rem;}
+.am-box-show{width: 100%;position:absolute;bottom:6rem;text-align: center;z-index: 1;
+	overflow:hidden;z-index: 20;}
+.shakebg{position: absolute;top: 20%;width: 55%;margin-left: 23%;}
+.shaketitle{position: absolute;top: 60%;width: 80%;margin-left: 10%;z-index: 11;}
+.logo{width: 17%;position: absolute;top: 2rem;left: 2rem;z-index: 11;}
+.am-footer{width: 100%;height:auto;position:absolute;
+text-align: center;color: rgb(255,169,65);bottom:0;z-index: 20;}
+.am-box-data-phone{display: inline-block;color: #971517;font-size: 1.4rem;}
+.am-box-data-info{display: inline-block;margin-left:2rem;color: #971517;font-size: 1.4rem;}
+.am-footer p{margin-bottom: 0}
+.am-footer img{width:1.5rem;}
+.am-modal{width: 80%;left: 10%;margin-left: 0;}
+.am-modal-hd{font-size: 1.6rem;color:#ff0000;}
+.am-modal-bd{border-bottom: 0;border-top:1px solid #e7e7e7;padding-top:10px;font-size: 1.4rem}
+.am-modal-dialog{padding-bottom: 10px;}
+.am-modal-hd+.am-modal-bd{padding-top: 10px;}
+.am-box-data{width: auto;height: 0px;overflow: hidden;}
+.am-box-data p{color:#fff;}
+*+address, *+blockquote, *+dl, *+fieldset, *+figure, *+hr, *+ol, *+p, *+pre, *+ul{margin-top: 0;}
+@media screen and (max-height: 570px){
+	.am-box-show {height: 8rem}
+}
+@media screen and (max-height: 520px){
+	.am-background-image{height:auto;}
+	.shakeImage{top: 31%;}
+	.am-box-show {height: 6rem}
+	.shakebg{
+    top: 20.8%;
+    width: 55.8%;
+    margin-left: 23.2%;
+    height:auto;
+	}
+	.shaketitle{
+		top: 63%
+	}
+}
+
+@media screen and (min-height: 500px) and (max-height: 640px){
+	.shakeImage{top: 29%;}
+}
+@media screen and (min-width: 400px) and (max-width: 412px){
+	.shakeImage{top: 28%;}
+}
+@media screen and (min-width: 400px) and (min-height: 570px){
+	.shakeImage{top: 25%;}
+}

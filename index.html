@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="viewport"
+  content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>领取奖品</title>
+
+  <!-- Set render engine for 360 browser -->
+  <meta name="renderer" content="webkit">
+
+  <!-- No Baidu Siteapp-->
+  <meta http-equiv="Cache-Control" content="no-siteapp"/>
+
+  <link rel="icon" type="image/png" href="assets/i/favicon.png">
+
+  <!-- Add to homescreen for Chrome on Android -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="icon" sizes="192x192" href="assets/i/app-icon72x72@2x.png">
+
+  <!-- Add to homescreen for Safari on iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+  <link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
+
+  <!-- Tile icon for Win8 (144x144 + tile color) -->
+  <meta name="msapplication-TileImage" content="assets/i/app-icon72x72@2x.png">
+  <meta name="msapplication-TileColor" content="#0e90d2">
+
+  <link rel="stylesheet" href="assets/css/amazeui.min.css">
+  <link rel="stylesheet" href="assets/css/app.css">
+  <link rel="stylesheet" type="text/css" href="normal.css">
+  <link rel="stylesheet" type="text/css" href="index.css">
+  <link rel="stylesheet" type="text/css" href="animate.css">
+  <script>
+    if(!localStorage.token){
+    window.location.href="first.html";
+  }
+  </script>
+</head>
+<body>
+  <img src="img/1.png" class="am-background-image ">
+  <img src="img/lsjlogo.png" class="logo" alt="">
+  <img src="img/shouji.png" class="shakeImage animated infinite wobble" >
+  <img src="img/4.png" class="shaketitle" alt="">
+  <!--<canvas id="myCanvas" style="">
+Your browser does not support the canvas element.
+</canvas>-->
+<div class="am-box-show">
+  <div style="width:100%;height:auto;">
+    <div class="am-box-showdata" id="showdata_id">
+      <!-- <div class="am-box-data">
+        <p class="am-box-data-phone">136***2631</p>
+        <p class="am-box-data-info">摇到1张门票</p>
+      </div> -->
+      
+      </div>
+    </div>
+  </div>
+  <div class="am-footer" ><p>活动规则</p><img src="img/down.png"></div>
+  <div class="am-footer-footer"></div>
+  <div class="am-modal am-modal-no-btn" tabindex="-1" id="doc-modal-1">
+    <div class="am-modal-dialog">
+      <div class="am-modal-hd">刘三姐故里
+        <a href="javascript: void(0)" class="am-close am-close-spin" data-am-modal-close>&times;</a>
+      </div>
+      <div class="am-modal-bd" style="text-align:left">
+        活动规则：
+        <br />
+  1.关注“恒远旅游”公众号，点击菜单里摇一摇活动，验证手机号后进行摇一摇抽奖。
+    <br />
+  2.活动时间为：2017.3.6-3.29。
+    <br />
+  3.本次活动奖品为刘三姐故里景区门票，不含坐船。
+    <br />
+  4.若抽中奖品，请详细阅读“使用须知”进行兑换票。
+    <br />
+  5.本次活动最终解释权归刘三姐故里景区所有。
+      </div>
+    </div>
+  </div>
+  <!--[if (gte IE 9)|!(IE)]><!-->
+  <script src="assets/js/jquery.min.js"></script>
+  <!--<![endif]-->
+<!--[if lte IE 8 ]>
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="assets/js/amazeui.ie8polyfill.min.js"></script>
+<![endif]-->
+<script src="assets/js/amazeui.min.js"></script>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/wx.js"></script>
+<script src="assets/js/wxshare.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function(){
+  var wH=window.innerHeight,wW=window.innerWidth;
+  if(wH/wW<1.425){
+    $('.shakeImage').css('top',wH*0.253)
+  }
+  
+  var a = $(document).height();
+  if (a=551) {
+    $(".am-box-show").css("bottom","16%");
+  };
+});
+</script>
+<script type="text/javascript">
+
+var app = app==undefined ? {} : app;
+app.webcode = 'liusanjie';
+app.eventid='9';
+app.newbase='http://event.91zmt.com';
+var lr = null;
+var SHAKE_THRESHOLD = 1500;
+var last_update = 0;
+var x = y = z = last_x = last_y = last_z = 0;
+function init() {
+  if (window.DeviceMotionEvent) {
+    window.addEventListener('devicemotion', deviceMotionHandler, false);
+  } else {
+    alert('not support mobile event');
+  }
+}
+function deviceMotionHandler(eventData) {
+  var acceleration = eventData.accelerationIncludingGravity;
+  var curTime = new Date().getTime();
+  if ((curTime - last_update) > 100) {
+    var lr = localStorage.redpacket!=undefined || localStorage.redpacket!=null ? localStorage.redpacket : '';
+    var diffTime = curTime - last_update;
+    last_update = curTime;
+    x = acceleration.x;
+    y = acceleration.y;
+    z = acceleration.z;
+    var speed = Math.abs(x + y + z - last_x - last_y - last_z) / diffTime * 10000;
+    if (speed > SHAKE_THRESHOLD) {
+      $.ajax({
+        url : app.newbase+"/api/event/"+app.eventid+"/action",
+        type : "POST",
+        dataType : "JSON",
+        data:{
+          'eventid':app.eventid,
+          'token':localStorage.token
+        },
+        success : function(data){
+                      if(data.result==true&&data.data.winning==true || data.result == "true"&&data.data.winning==true) {
+                        localStorage.removeItem('error');
+                        localStorage.result=JSON.stringify(data.data);
+                         window.location.href="get.html";
+                      } else if(data.result==true&&data.data.winning==false){
+                        localStorage.setItem('error',"奖品飞走了");
+                        window.location.href="get.html";
+                      } else{
+                        var xml='错误';
+                        console.log(data.errorcode)
+                          switch(data.errorcode){
+                            case 9:xml="网络不给力啊，请稍后重试";break;
+                            case 2:xml="验证码错误，请重试";break;
+                            case 4:xml="你已经参加过活动啦";break;
+                            case 3:xml="手机号验证过期请重新验证";window.location.href="first.html";break;
+                          }
+                            alert(xml);
+                      }
+                  },
+                      error : function(XMLHttpRequest, textStatus, errorThrown){
+                        alert("服务器维护");
+                      }
+              });
+    }
+
+    last_x = x;
+    last_y = y;
+    last_z = z;
+  }
+}
+$('.am-footer').click(function(){
+      $("#doc-modal-1").modal();
+    })
+function shuaxin(){
+  
+  $(".am-box-data").animate({height:'2rem'});
+  $.ajax({
+    url:app.newbase+"/api/event/"+app.eventid+"/randomwinner",
+    type:"GET",
+    dataType:"JSON",
+    data:{token:localStorage.token},
+    success:function(data){
+
+      if (data.result==true&&data.data.phoneNo!=undefined||data.result=="true"){
+          var newdata=data.data;
+             $("#showdata_id").prepend("<div class='am-box-data'>"+
+               "<p class='am-box-data-phone'>"+newdata.phoneNo+"</p>"+
+               "<p class='am-box-data-info'>摇到"+newdata.prize+"</p></div>");
+             $(".am-box-data").animate({height:'25px'});
+                  
+        }
+      
+    },
+    error:function(XMLHttpRequest,textStatus,errorThrown){}
+  });
+}
+setInterval(shuaxin,2000);
+init();
+</script>
+</body>
+</html>

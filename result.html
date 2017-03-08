@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en" >
+    <head>
+        <meta charset="utf-8">
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <title>领取奖品</title>
+    </head>
+    <style>
+	* {margin:0;padding:0;box-sizing: border-box;}
+    html{height:100%;}
+	html,body{font-size:62.5%;font-family: "Segoe UI", "Lucida Grande", Helvetica, Arial, "Microsoft YaHei", 
+FreeSans, Arimo,"Droid Sans","wenquanyi micro hei","Hiragino Sans GB", "Hiragino Sans GB W3", Arial, sans-serif;}
+    body{color:#999;background:#ea4146;padding:6rem 1rem 1rem 1rem;min-height:100%;}
+	header{text-align:center;position:absolute;top:0;left:0;height:4rem;line-height:4rem;display:block;width:100%;font-size:2rem;color:#fff;}
+	.container{height:100%;background:#fff;text-align:center;position:relative;padding: 1rem;}
+	.close{position:absolute;top:1.5rem;left:1.5rem;width:1.5rem;}
+    .logo{position:absolute;top:3.5rem;width:6rem;height:6rem;background:#eee;border-radius:50%;border: 1px solid #999;left:0;right:0;margin:0 auto;z-index:2;}
+    .logo img{height:4.5rem;margin-top:0.75rem;}
+    .title{font-size:2rem;font-weight:700;padding-top:3.5rem;color:#222;margin-bottom:2rem;}
+    .date-box{position:relative;margin-bottom:2rem;}
+    .date-box p{color:#222;font-size:1.5rem;margin-bottom:1rem;}
+    .date-box p.chosed-date{margin-bottom:0;}
+    .date-box:after{content:'';width:100%;height:1px;position:absolute;bottom:-1rem;left:0;background:#eee;}
+    .date-box p:nth-child(1){color:#222;font-size:1.5rem;margin-bottom:1rem;}
+    .date-box p.tipe{color:#ea4146;font-size:1.5rem;}
+    .date-box .sure-time,.date-box a{display:block;width:70%;background:#FEAA3A;font-size:1.4rem;color:#fff;text-decoration:none;margin:0.5rem 15%;border-radius:5px;padding: 1rem;}
+    .more-box{bottom:0;width:100%;left:0;position:relative;margin-top:1.5rem;}
+    .more-box img{width:100%;}
+    .chose-date{border:1px solid #FEAA3A;width:70%;margin-left:15%;border-radius:5px;padding:0.5rem;position:relative;display:block;}
+    .chose-date img{height:2rem;position:absolute;left:1rem;}
+    .date-box .chose-date p{display:inline-block;font-size:1.8rem;vertical-align:middle;color:#FEAA3A;line-height:2rem;}
+    .rule-box{text-align:left;position:relative;}
+    .rule-box p{color:#222;font-size:1.5rem;margin-bottom:5px;}
+    .rule-box ul li{list-style:none;font-size:1.4rem;padding:1px 0;margin-bottom:0.3rem;color:#808080;}
+    .rule-box ul li a{color:#808080;text-decoration:none;}
+    .more-img {width:2.8rem;position:absolute;left:0;right:0;margin:0 auto;padding:0.5rem;display:none;z-index:2;}
+    .clear{display:block;background:rgba(12,12,12,.5);color:#fff;font-size:1.6rem;padding:0.5rem 0;clear:both;position:absolute;left:0;overflow:hidden;bottom:0.3rem;width:100%;}
+    .clear img{width:0.6rem;height:auto;margin-left:0.5rem;}
+    .clear span{margin:0 1rem;line-height:2rem;}
+    .clear span:nth-child(1){float:left;}
+    .clear span:nth-child(2){float:right;}
+    .date-box.sure{display:none;}
+    .date-box.sure .chosed-date{color:#FEAA3A;font-size:1.8rem;margin-bottom:1rem;}
+    .date-box.sure .chosed-date{color:#222;font-size:1.5rem;margin-bottom:1rem;}
+    .more-color{color:#fff;}
+    .result-code{width:40%;}
+    .date-box.sure .eval-ticket{width:50%;padding:0.5rem 1rem;margin:0.5rem 25%;border-radius:5px;border:1px solid rgb(207,52,70);color:rgb(207,52,70);background:none;}
+    .loading {
+    width: 4rem;
+    height: 4rem;
+    position: absolute;
+    top: 0;left: 0;bottom: 0;right: 0;
+    margin: auto;
+    border: 2px #fff solid;
+    border-radius: 50%;
+    -webkit-animation: rotation 1s ease-in-out infinite;
+    -moz-animation: rotation 1s ease-in-out infinite;
+    animation: rotation 1s ease-in-out infinite;
+}
+.loadingbg{display:none;width: 100%;height: 100%;background: rgba(12,12,12,.8);position: fixed;top: 0;left: 0;z-index: 999;}
+.loading:after {
+    width: 1rem;
+    height: 1rem;
+    background-color: rgba(255,255,255,1);
+    border-radius: 100%;
+    position: absolute;
+    content: "";
+    top:6px;
+}
+@keyframes rotation{
+    from {transform: rotate(0deg);}
+    to {transform: rotate(360deg);}
+}
+@-webkit-keyframes rotation /* Safari 和 Chrome */
+{
+    from {transform: rotate(0deg);}
+    to {transform: rotate(360deg);}
+}
+    </style>
+    <link rel="stylesheet" href="assets/css/mobiscroll.custom-2.6.2.min.css">
+    <script>
+    if(!localStorage.result){
+        window.location.href="first.html"
+          
+        }
+    </script>
+    <body>
+    <header>奖品详情</header>
+    <div  class="logo" align="center"><img src="img/lsjlogo.png" alt=""></div>
+    <div class="container">
+    	<p class="title">刘三姐门票一张</p>
+        <div class="date-box ">
+            <p>请选择出行日期</p>
+            <label for="date-input" class="chose-date obj" ><img class="obj" src="img/resultIcon.png" alt=""><p class="chosed-date obj">2017-03-03</p></label>
+            <span class='sure-time' >确定日期</span>
+            <input type="hidden" id="date-input" >
+            <p class="tipe">日期确定后不可更改</p>
+        </div>
+        <div class="date-box sure">
+            <p>出行日期:<span class="chosed-date">2017-03-03</span></p>
+            <p>兑换码:<span class="chosed-code">123456781234</span></p>
+            <img src="img/resultcode.jpg" class="result-code" alt="">
+            <a href="http://lsj.91zmt.com/second.html?page=ticket" class="eval-ticket">优惠买票</a>
+        </div>
+        <div class="rule-box">
+             <p>使用须知</p>
+             <ul>
+                 <li>1.中奖门票确定日期后不可更改。此票适用于1位游客入园。</li>
+                 <li>2.本门票可游玩：刘三姐故居（流河寨）、歌仙庙等景点，不含游江船票。</li>
+                 <li>3.查看中奖门票请到会员中心-我的订单，登录账号与密码皆为您的手机号。</li>
+                 <li>4.兑换码将以短信形式发送至您的手机，也可截图保存兑换码和二维码页面；到景区售票处凭兑换码或二维码兑换纸质门票。</li>
+                 <li>5.本次活动最终解释权归刘三姐故里景区所有，如有问题，请咨询<a href="tel:0778-3318088">0778-3318088</a>,<a href="tel:0778-7926114">0778-7926114</a>。</li>
+             </ul>
+             <img src="img/ruleicon.png"  class="more-img" alt="">       
+        </div>
+        <div class="more-box">
+            <img src="img/more.png"  alt="">
+            <a class="clear" href="http://lsj.91zmt.com/second.html?page=ticket"><span>刘三姐故里</span><span class="more-color">详细<img src="img/moreicon.png"  alt=""></span></a>
+        </div>
+        <div id="date-box" class="jalendar"></div>
+    </div>
+    <div class="loadingbg"><div class="loading"></div></div>
+    <script src="jquery-2.1.4.min.js"></script>
+    <script src="assets/js/wx.js"></script>
+    <script src="assets/js/wxshare.js"></script>
+    <script src="assets/js/mobiscroll.custom-2.6.2.min.js"></script>
+    <script>
+    if(localStorage.result){      
+    var result=JSON.parse(localStorage.result);
+    }
+    var today=new Date();
+    var currY = today.getFullYear();
+    var currM=today.getMonth();
+    var currD=today.getDate();
+    var opt = {};
+    opt.date = {preset : 'date', minDate: new Date(currY,currM,currD+1), maxDate: new Date(2017,2,29),dateFormat:'yy-mm-dd'};
+    $('#date-input').val('').scroller('destroy').scroller(
+        $.extend(opt['date'], { 
+            theme: 'android-ics light', 
+            mode: 'scroller', 
+            display:'bottom', 
+            lang: 'zh' 
+        }));
+    var app=app==undefined?{}:app;
+    app.webcode = 'saiyungkee';
+    app.uid ='20';
+    app.eventCode='random_hongbao';
+    app.eventid='9';
+    app.newbase='http://platform.91zmt.com/';
+    if(localStorage.code){
+        var code=localStorage.code;
+            $('.result-code').attr('src','http://platform.91zmt.com/interface/events/luckdraw/liusanjie/qrcode/'+code+'?phoneno='+result.phoneNo);
+            code=codeFormat(code)
+            $('.chosed-code').text(code)
+            $('.date-box').hide();
+            $('.date-box.sure').show();
+    }
+    $(function(){
+        if(localStorage.result){
+          var result=JSON.parse(localStorage.result)
+          $(".title").text(result.prize);
+          $(".chosed-date").text(currY+'-'+parseInt(currM+1)+'-'+parseInt(currD+1));
+        } 
+        
+        // 选择日期
+        $('.chose-date').click(function(){
+            $('#date-input').click();
+        })
+        $('#date-input').on('change',function(){
+             $('.chosed-date').text($(this).val())
+        })
+        // 更多规则
+        // $('.more-img').click(function(){
+        //     $(this).hide(200);
+        //     var wH=$(document).height();
+        //     $('body').css({'transition':'all 0.5s','-webkit-transition':'all 0.5s'});
+        //     $('body').css('height',wH+rH+10-btnT)
+        //     rule.find('ul').css("height",'auto')
+        // })
+        // 确定时间
+       
+        $('.sure-time').click(function(){
+             $('.loadingbg').show();
+            var time=$('.chose-date').text();
+            //获取消费码
+           
+            $.ajax({
+                url: app.newbase+'interface/events/luckdraw/liusanjie/claim',
+                type: 'POST',
+                dataType: 'json',
+                data: {ticket: result.ticket,phoneno:result.phoneNo,usedate:time,claimNumber:result.claimNumber},
+            })
+            .done(function(data) {
+                var order=data.order;
+                localStorage.order=JSON.stringify(order);
+                var code=order.orderDetails[0].consumercode.consumerCode;
+                
+                $('.result-code').attr('src','http://platform.91zmt.com/interface/events/luckdraw/liusanjie/qrcode/'+code+'?phoneno='+result.phoneNo);
+                localStorage.code=code;
+                code=codeFormat(code)
+                $('.chosed-code').text(code)
+                $('.date-box').hide();
+                $('.date-box.sure').show();
+                $('.loadingbg').hide();
+            })
+            .fail(function(data) {
+                alert('网络错误，请重试')
+            })
+            return false;
+        })
+        
+    })
+    function codeFormat(num){
+        var newNum='';
+        if(typeof(num)=='number'){
+            num=num.toString();
+        }
+        for(var i=0,j=4;i<num.length;i=i+4,j=j+4){
+            newNum+=num.slice(i,j)+' ';
+        }
+        return newNum;
+    }
+    
+    </script>
+    </body>
+</html>

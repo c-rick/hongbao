@@ -1,0 +1,139 @@
+<!doctype html>
+<html class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>领取奖品</title>
+
+  <!-- Set render engine for 360 browser -->
+  <meta name="renderer" content="webkit">
+
+  <!-- No Baidu Siteapp-->
+  <meta http-equiv="Cache-Control" content="no-siteapp"/>
+
+  <link rel="icon" type="image/png" href="assets/i/favicon.png">
+
+  <!-- Add to homescreen for Chrome on Android -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="icon" sizes="192x192" href="assets/i/app-icon72x72@2x.png">
+
+  <!-- Add to homescreen for Safari on iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
+  <link rel="apple-touch-icon-precomposed" href="assets/i/app-icon72x72@2x.png">
+
+  <!-- Tile icon for Win8 (144x144 + tile color) -->
+  <meta name="msapplication-TileImage" content="assets/i/app-icon72x72@2x.png">
+  <meta name="msapplication-TileColor" content="#0e90d2">
+<!--  -->
+  <link rel="stylesheet" href="assets/css/amazeui.min.css">
+  <link rel="stylesheet" href="assets/css/app.css">
+  <link rel="stylesheet" type="text/css" href="normal.css">
+  <link rel="stylesheet" type="text/css" href="get.css">
+<script>
+  if(!localStorage.getItem('error')&&!localStorage.result){
+    window.location.href="first.html"
+  }
+</script>
+</head>
+<body>
+<div class="logo" align="center">
+   <img src="img/lsjlogo.png"  alt="">
+</div>
+  <div class="get-message">
+    <p class="prize-tip">恭喜你获得</p>
+    <p class="prize-name"></p>
+    <p class="prize-time"></p>
+  </div>
+  <!-- <div class="am-box-content ">
+    <p class="color-f">请验证手机后领取，以便我们跟您联系</p>
+    <input placeholder="请输入手机号" id="am-input"/>
+    <div class="am-box-content-input">
+      <input placeholder="请输入手机验证码" id="am-input-yanzheng"/>
+      <div class="am-div-send">发送验证码</div>
+    </div>
+    <div class="am-button-get" >马上领取</div>
+  </div> -->
+  <div class="am-box-content geted">
+    <p class="color-f">需提前24小时确定游玩日期</p>
+    <a href="result.html">确定日期</a>
+  </div>
+  <div class="am-box-content geted error">
+    <p class="color-f">没关系，刘三姐三月里生日，优惠门票等你来</p>
+    <a href="http://lsj.91zmt.com/second.html?page=ticket">优惠买票</a>
+  </div>
+  <!-- <div class="am-box-content1">
+    <div class="am-horizontal"><div class="am-btn-info am-horizontal" id="am-btn-info1">1</div><br><p class="am-get-info">领取红包</p></div>
+    <div class="am-horizontal-box"><div class="am-line am-horizontal"></div></div>
+    <div class="am-horizontal"><div class="am-btn-info am-horizontal">2</div><br><p class="am-get-info">在线点餐</p></div>
+    <div class="am-horizontal-box"><div class="am-line am-horizontal"></div></div>
+    <div class="am-horizontal"><div class="am-btn-info am-horizontal">3</div><br><p class="am-get-info">红包抵扣</p></div>
+  </div> -->
+  <div class="get-rule">
+    <p class="rule-title" style="margin:0;"><span>活动规则</span></p>
+    <ul>
+      <li>1.关注“恒远旅游”公众号，点击菜单里摇一摇活动，验证手机号后进行摇一摇抽奖。</li>
+      <li>2.活动时间为：2017.3.6-3.29。</li>
+      <li>3.本次活动奖品为刘三姐故里景区门票，不含坐船。</li>
+      <li>4.若抽中奖品，请详细阅读“使用须知”进行兑换票。</li>
+      <li>5.本次活动最终解释权归刘三姐故里景区所有。</li>
+    </ul>
+  </div>
+
+<!--[if (gte IE 9)|!(IE)]><!-->
+
+<script src="assets/js/jquery.min.js"></script>
+<!--<![endif]-->
+<!--[if lte IE 8 ]>
+<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://cdn.staticfile.org/modernizr/2.8.3/modernizr.js"></script>
+<script src="assets/js/amazeui.ie8polyfill.min.js"></script>
+<![endif]-->
+<script src="assets/js/amazeui.min.js"></script>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/wx.js"></script>
+<script src="assets/js/wxshare.js"></script>
+<script type="text/javascript">
+  //test
+  
+//----------------------------------------------
+  $(document).ready(function(){
+    if(localStorage.getItem('error')){
+      $(".prize-name").text(localStorage.getItem('error'));
+      $(".prize-time").text('');
+      $(".prize-tip").text('很遗憾没有抽中');
+      $(".geted").hide();
+      $(".error").show();
+    }else if(localStorage.result){
+      var result=JSON.parse(localStorage.result)
+      $(".prize-name").text(result.prize);
+      $(".prize-time").text("有效期至:"+localStorage.endtime);
+    }  
+    if(($('body').width()/$('body').height())>0.67){
+      $('.error').css('paddingTop','76%');
+    }
+    var a=$(document).width();
+    if (a==320) {
+      $(".am-box-content1").css("top","100%");
+      $(".am-box-content").css("top","57%");
+      $(".am-footer").css("top","115%");
+      
+    };
+    
+    $("#am-btn-info1").css("background-color","#fff").css("color","#ff0000");
+    $(".am-button-get").click(function(){
+      $(this).parents(".am-box-content").hide();
+      $(".am-box-content.geted").show();
+    })
+ 
+  });
+  
+</script>
+
+</body>
+</html>
